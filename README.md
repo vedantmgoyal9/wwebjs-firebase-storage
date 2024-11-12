@@ -33,9 +33,9 @@ const client = new Client({
     authStrategy: new RemoteAuth({
         store: new FirebaseStorageStore({
             firebaseStorage: getStorage(app),
-            sessionPath: 'sessions-whatsapp-web.js',
+            sessionPath: 'sessions-whatsapp-web.js', // save in a sub-directory
         }),
-        backupSyncIntervalMs: 600000,
+        backupSyncIntervalMs: 600000, // 10 minutes
     }),
     ... // other options
 });

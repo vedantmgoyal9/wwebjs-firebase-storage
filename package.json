@@ -2,14 +2,18 @@
   "name": "wwebjs-firebase-storage",
   "version": "1.0.1",
   "description": "A remote authentication plugin for whatsapp-web.js, using Firebase Storage to securely store WhatsApp multi-device session data.",
-  "main": "index.ts",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
   "files": [
-    "index.ts",
+    "index.js",
+    "index.d.ts",
     "LICENSE",
     "package.json",
     "README.md"
   ],
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

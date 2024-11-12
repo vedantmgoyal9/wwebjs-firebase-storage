@@ -24,11 +24,11 @@ export { getStorage } from 'firebase/storage';
  *   authStrategy: new RemoteAuth({
  *     store: new FirebaseStorageStore({
  *       firebaseStorage: getStorage(app),
- *       sessionPath: 'sessions-whatsapp-web.js', // optional
+ *       sessionPath: 'sessions-whatsapp-web.js', // save in a sub-directory
  *     }),
- *     backupSyncIntervalMs: 300000, // 5 minutes
+ *     backupSyncIntervalMs: 600000, // 10 minutes
  *   }),
- *   ...
+ *   ... // other options
  * });
  */
 export class FirebaseStorageStore {
