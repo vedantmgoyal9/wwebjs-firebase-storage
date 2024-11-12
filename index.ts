@@ -1,13 +1,12 @@
 import {
   deleteObject,
+  getBytes,
   getMetadata,
-  getStream,
   ref,
   uploadBytes,
   type FirebaseStorage,
 } from 'firebase/storage';
 import { createWriteStream, openAsBlob } from 'node:fs';
-import { join } from 'node:path';
 
 export { initializeApp } from 'firebase/app';
 export { getStorage } from 'firebase/storage';
@@ -74,16 +73,20 @@ export class FirebaseStorageStore {
     );
   }
   async extract(options: { session: string; path: string }): Promise<void> {
-    const sessionFile = getStream(
-      ref(
-        this.fbStorage,
-        this.sessionPath
-          ? `${this.sessionPath.replace(/\\/g, '/')}/${options.session}.zip`
-          : `${options.session}.zip`,
+    createWriteStream(options.path, {
+      autoClose: true,
+      encoding: 'binary',
+    }).write(
+      Buffer.from(
+        await getBytes(
+          ref(
+            this.fbStorage,
+            this.sessionPath
+              ? `${this.sessionPath.replace(/\\/g, '/')}/${options.session}.zip`
+              : `${options.session}.zip`,
+          ),
+        ),
       ),
-    );
-    createWriteStream(join(options.path, `${options.session}.zip`)).write(
-      sessionFile,
     );
   }
   async delete(options: { session: string }): Promise<void> {
