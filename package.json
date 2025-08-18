@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/vedantmgoyal9/wwebjs-firebase-storage#readme",
   "dependencies": {
-    "firebase": "^11.0.1"
+    "firebase": "^12.1.0"
   },
   "devDependencies": {
     "@types/node": "^24.0.3",
